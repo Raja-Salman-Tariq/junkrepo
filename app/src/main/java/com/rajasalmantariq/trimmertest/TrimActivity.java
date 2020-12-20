@@ -189,6 +189,28 @@ public class TrimActivity extends AppCompatActivity {
     }
 
     private void trimVideo(int start, int stop, String filePrefix) {
+
+        File dirUpr= new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES),"/Obstructy");
+
+//            File dir=new File(dest.getPath(),"/Obstructy");
+        if (! dirUpr.exists()){
+            if (! dirUpr.mkdirs()){
+                Log.d("myvid", "failed to create directory");
+                return;
+            }
+            else{
+                Log.d("myvid", "dir made at abs: "+dirUpr.getAbsolutePath()
+                        +", w path: "+dirUpr.getPath());
+//                        +", w can path: "+dir.getCanonicalPath());
+            }
+        }
+        else{
+            Log.d("myvid", "dir existed at abs: "+dirUpr.getAbsolutePath()
+                    +", w path: "+dirUpr.getPath());
+//                    +", w can path: "+dir.getCanonicalPath());
+        }
+
         File dir=new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES)+"/Obstructy","/Cropped");
 
